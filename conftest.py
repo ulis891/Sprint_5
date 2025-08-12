@@ -8,3 +8,8 @@ def driver():
     driver.maximize_window()
     yield driver
     driver.quit()
+
+
+@pytest.fixture
+def base_url():
+    return "https://qa-desk.stand.praktikum-services.ru/"
