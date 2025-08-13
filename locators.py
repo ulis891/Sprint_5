@@ -15,11 +15,7 @@ class Locators:
     PASSWORD_INPUT = (By.CSS_SELECTOR, "input[name='password']")
     CONFIRM_PASSWORD_INPUT = (By.CSS_SELECTOR, "input[name='submitPassword']")
     LOGIN_BUTTON = (By.XPATH, '//button[contains(text(), "Войти")]')
-
-    # Форма регистрации
     NO_ACCOUNT_BUTTON = (By.XPATH, '//button[contains(text(), "Нет аккаунта")]')
-    NAME_INPUT = (By.ID, 'name')
-    # CONFIRM_PASSWORD_INPUT = (By.ID, 'confirmPassword')
     CREATE_ACCOUNT_BUTTON = (By.XPATH, '//button[contains(text(), "Создать аккаунт")]')
 
     # Ошибки
