@@ -26,9 +26,9 @@ class Locators:
     MODAL_AUTH_REQUIRED = (By.XPATH, '//h2[contains(text(), "Чтобы разместить объявление, авторизуйтесь")]')
 
     # Форма создания объявления
-    AD_TITLE_INPUT = (By.ID, 'title')
-    AD_DESCRIPTION_INPUT = (By.ID, 'description')
-    AD_PRICE_INPUT = (By.ID, 'price')
+    AD_TITLE_INPUT = (By.CSS_SELECTOR, "input[name='name']")
+    AD_DESCRIPTION_INPUT = (By.CSS_SELECTOR, "input[name='description']")
+    AD_PRICE_INPUT = (By.CSS_SELECTOR, "input[name='price']")
     CATEGORY_DROPDOWN = (By.ID, 'category')
     CITY_DROPDOWN = (By.ID, 'city')
     CONDITION_RADIO_NEW = (By.XPATH, '//input[@type="radio" and @value="new"]')
