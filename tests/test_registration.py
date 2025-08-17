@@ -31,8 +31,8 @@ class TestRegistration:
 
         wait.until(EC.visibility_of_element_located(L.EMAIL_INPUT)).send_keys("invalid-email")
         driver.find_element(*L.CREATE_ACCOUNT_BUTTON).click()
-        error_elements = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(L.ERROR_ELEMENT))
-        error_message = driver.find_elements(*L.ERROR_MESSAGE_UNDER_EMAIL)[0].text
+        error_elements = wait.until(EC.presence_of_all_elements_located(L.ERROR_ELEMENT))
+        error_message = driver.find_element(*L.ERROR_MESSAGE_UNDER_EMAIL).text
         assert len(error_elements) == 3, "Не найдено 3 окна с ошибкой"
         assert error_message == "Ошибка", "Сообщение об ошибке не появилось"
 
