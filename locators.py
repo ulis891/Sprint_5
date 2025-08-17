@@ -8,7 +8,6 @@ class Locators:
     USER_AVATAR = (By.CLASS_NAME, 'circleSmall')
     USER_NAME = (By.CSS_SELECTOR, "h3.profileText.name")
     LOGOUT_BUTTON = (By.XPATH, '//button[contains(text(), "Выйти")]')
-    PROFILE_LINK = (By.LINK_TEXT, 'Профиль')
 
     # Форма регистрации
     EMAIL_INPUT = (By.CSS_SELECTOR, "input[name='email']")
@@ -19,8 +18,8 @@ class Locators:
     CREATE_ACCOUNT_BUTTON = (By.XPATH, '//button[contains(text(), "Создать аккаунт")]')
 
     # Ошибки
-    ERROR_MESSAGE_UNDER_EMAIL = (By.CLASS_NAME, 'input_span__yWPqB')
-    ERROR_ELEMENT = (By.CLASS_NAME, "input_inputError__fLUP9")
+    ERROR_MESSAGE_UNDER_EMAIL = (By.XPATH, "(//div[starts-with(@class,'popUp_inputColumn')]//span)[1]")
+    ERROR_ELEMENT = (By.XPATH, "//div[starts-with(@class, 'input_inputError')]")
 
     # Модальное окно
     MODAL_AUTH_REQUIRED = (By.XPATH, '//h1[contains(text(), "Чтобы разместить объявление, авторизуйтесь")]')
@@ -33,7 +32,6 @@ class Locators:
     CATEGORY_OPTION_AUTO = (By.XPATH, "//button[span[text()='Авто']]")
     CITY_DROPDOWN = (By.XPATH, "//input[@name='city']/following-sibling::button")
     CITY_OPTION_MOSCOW = (By.XPATH, "//button[span[text()='Москва']]")
-    NEW_CONDITION_RADIO = (By.XPATH, "//input[@name='condition' and @value='Новый']")
     USED_CONDITION_RADIO = (By.XPATH, "//input[@name='condition' and @value='Б/У']")
     PUBLISH_BUTTON = (By.XPATH, "//button[text()='Опубликовать']")
 
