@@ -4,7 +4,7 @@ from locators import Locators as L
 
 
 class TesttestAdCreation:
-    def test_ad_creation_by_authorized_user(self, driver, base_url, create_email):
+    def test_ad_creation_by_authorized_user_success(self, driver, base_url, create_email):
         email = create_email
         password = "password123"
 

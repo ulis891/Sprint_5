@@ -6,7 +6,7 @@ from locators import Locators as L
 
 class TestRegistration:
 
-    def test_successful_registration(self, driver, base_url):
+    def test_user_registration_success(self, driver, base_url):
         unique_email = f"test_{int(time.time())}@praktikum.test"
         password = "password123"
 
@@ -23,7 +23,7 @@ class TestRegistration:
         assert user_name_element.text == "User.", "Имя пользователя не отображается или неверно"
         assert wait.until(EC.visibility_of_element_located(L.USER_AVATAR)), "Аватар пользователя не найден"
 
-    def test_registration_with_invalid_email_mask(self, driver, base_url):
+    def test_registration_with_invalid_email_mask_fail(self, driver, base_url):
         driver.get(base_url)
         wait = WebDriverWait(driver, 10)
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
@@ -36,7 +36,7 @@ class TestRegistration:
         assert len(error_elements) == 3, "Не найдено 3 окна с ошибкой"
         assert error_message == "Ошибка", "Сообщение об ошибке не появилось"
 
-    def test_registration_of_existing_user(self, driver, base_url):
+    def test_registration_of_existing_user_fail(self, driver, base_url):
         def registration(web_driver, wait_driver, email, password):
             wait_driver.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
             wait_driver.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
