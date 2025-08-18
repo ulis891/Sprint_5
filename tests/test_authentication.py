@@ -2,7 +2,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators as L
 from data import TestData as D
-import helpers
 
 
 class TestAuthentication:
@@ -28,11 +27,10 @@ class TestAuthentication:
         wait = WebDriverWait(driver, D.WAIT_TIME)
 
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
-        wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
         driver.find_element(*L.EMAIL_INPUT).send_keys(email)
         driver.find_element(*L.PASSWORD_INPUT).send_keys(password)
-        driver.find_element(*L.CONFIRM_PASSWORD_INPUT).send_keys(password)
-        driver.find_element(*L.CREATE_ACCOUNT_BUTTON).click()
+        driver.find_element(*L.LOGIN_BUTTON).click()
+        wait.until(EC.visibility_of_element_located(L.USER_NAME))
         wait.until(EC.visibility_of_element_located(L.LOGOUT_BUTTON)).click()
         wait.until(EC.visibility_of_element_located(L.LOGIN_REG_BUTTON))
 
