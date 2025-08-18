@@ -10,7 +10,7 @@ class TestAuthentication:
         email,password = helpers.get_new_user()
 
         driver.get(D.BASE_URL)
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, D.WAIT_TIME)
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
         wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
         driver.find_element(*L.EMAIL_INPUT).send_keys(email)
@@ -32,7 +32,7 @@ class TestAuthentication:
         email,password = helpers.get_new_user()
 
         driver.get(D.BASE_URL)
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, D.WAIT_TIME)
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
         wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
         driver.find_element(*L.EMAIL_INPUT).send_keys(email)
