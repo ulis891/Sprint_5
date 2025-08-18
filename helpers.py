@@ -1,5 +1,6 @@
 import faker
 
+
 def get_new_user():
     fake = faker.Faker()
     email = fake.email()
