@@ -1,14 +1,15 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators as L
+from data import TestData as D
+import helpers
 
 
 class TestAuthentication:
-    def test_authentication_success(self, driver, base_url, create_email):
-        email = create_email
-        password = "password123"
+    def test_authentication_success(self, driver):
+        email,password = helpers.get_new_user()
 
-        driver.get(base_url)
+        driver.get(D.BASE_URL)
         wait = WebDriverWait(driver, 10)
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
         wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
@@ -27,11 +28,10 @@ class TestAuthentication:
         assert user_name_element.text == "User.", "Имя пользователя не отображается или неверно"
         assert wait.until(EC.visibility_of_element_located(L.USER_AVATAR)), "Аватар пользователя не найден"
 
-    def test_logout_success(self, driver, base_url, create_email):
-        email = create_email
-        password = "password123"
+    def test_logout_success(self, driver):
+        email,password = helpers.get_new_user()
 
-        driver.get(base_url)
+        driver.get(D.BASE_URL)
         wait = WebDriverWait(driver, 10)
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
         wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
