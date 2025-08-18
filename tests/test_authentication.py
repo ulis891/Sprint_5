@@ -7,17 +7,10 @@ import helpers
 
 class TestAuthentication:
     def test_authentication_success(self, driver):
-        email,password = helpers.get_new_user()
-
+        email = D.TEST_USER_EMAIL
+        password = D.TEST_USER_PASSWORD
         driver.get(D.BASE_URL)
         wait = WebDriverWait(driver, D.WAIT_TIME)
-        wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
-        wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
-        driver.find_element(*L.EMAIL_INPUT).send_keys(email)
-        driver.find_element(*L.PASSWORD_INPUT).send_keys(password)
-        driver.find_element(*L.CONFIRM_PASSWORD_INPUT).send_keys(password)
-        driver.find_element(*L.CREATE_ACCOUNT_BUTTON).click()
-        wait.until(EC.visibility_of_element_located(L.LOGOUT_BUTTON)).click()
 
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
         driver.find_element(*L.EMAIL_INPUT).send_keys(email)
@@ -29,10 +22,11 @@ class TestAuthentication:
         assert wait.until(EC.visibility_of_element_located(L.USER_AVATAR)), "Аватар пользователя не найден"
 
     def test_logout_success(self, driver):
-        email,password = helpers.get_new_user()
-
+        email = D.TEST_USER_EMAIL
+        password = D.TEST_USER_PASSWORD
         driver.get(D.BASE_URL)
         wait = WebDriverWait(driver, D.WAIT_TIME)
+
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
         wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
         driver.find_element(*L.EMAIL_INPUT).send_keys(email)

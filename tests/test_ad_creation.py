@@ -2,13 +2,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators as L
 from data import TestData as D
-import helpers
 
 
 class TestAdCreation:
     def test_ad_creation_by_authorized_user_success(self, driver):
-        email,password = helpers.get_new_user()
-
+        email = D.TEST_USER_EMAIL
+        password = D.TEST_USER_PASSWORD
+        driver.get(D.BASE_URL)
+        wait = WebDriverWait(driver, D.WAIT_TIME)
         ad = {
             'title': D.AD_TITLE,
             'city': D.AD_CITY,
@@ -16,8 +17,6 @@ class TestAdCreation:
             'price': D.AD_PRICE
             }
 
-        driver.get(D.BASE_URL)
-        wait = WebDriverWait(driver, D.WAIT_TIME)
         wait.until(EC.element_to_be_clickable(L.LOGIN_REG_BUTTON)).click()
         wait.until(EC.element_to_be_clickable(L.NO_ACCOUNT_BUTTON)).click()
         driver.find_element(*L.EMAIL_INPUT).send_keys(email)
@@ -68,7 +67,3 @@ class TestAdCreation:
         wait.until(EC.element_to_be_clickable(L.POST_AD_BUTTON)).click()
         actual_text = wait.until(EC.visibility_of_element_located(L.MODAL_AUTH_REQUIRED)).text
         assert expected_text == actual_text
-
-
-
-
