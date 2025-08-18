@@ -1,5 +1,6 @@
 class TestData:
     BASE_URL = "https://qa-desk.stand.praktikum-services.ru/"
+    WAIT_TIME = 10
 
     VALID_EMAIL = "test_user@example.com"
     VALID_PASSWORD = "Qwerty123!"
